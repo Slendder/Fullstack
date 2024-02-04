@@ -10,24 +10,24 @@ const App = () => {
   const Header = (prop) => {
     return (
       <div>
-        <p>{prop.course}</p>
+        <p>{prop.course}.</p>
       </div>
     )
   }
   const Content = (prop) => {
     return (
       <div>
-        <p> {prop.parts[0]} {prop.parts[1]} </p>
-        <p> {prop.parts[2]} {prop.parts[3]} </p>
-        <p> {prop.parts[4]} {prop.parts[5]} </p>
+        <p>{prop.parts[0]}: {prop.parts[1]} exercises.</p>
+        <p>{prop.parts[2]}: {prop.parts[3]} exercises.</p>
+        <p>{prop.parts[4]}: {prop.parts[5]} exercises.</p>
       </div>
     )
   }
 
-  const Total = (prop) => {
+  const Total = (prop) => {   
     return (
       <div>
-        <p>Total number of exercise: {prop.total_exercises}</p>
+        <p>Total number of exercise: {prop.total_exercises}.</p>
       </div>
     )
   }
