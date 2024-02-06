@@ -1,5 +1,5 @@
 import ReactDOM from 'react-dom/client'
 
-import App from './Exercise-02'
+import App from './Exercise-04'
 
 ReactDOM.createRoot(document.getElementById('root')).render(<App />)
