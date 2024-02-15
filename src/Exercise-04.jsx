@@ -23,15 +23,25 @@ const App = () => {
     const Total = (prop) => {   
         return (
           <div>
-            <p> {parts.name}: {parts.exercises} </p>
             <p>Total number of exercise: {prop.total_exercises}.</p>
           </div>
         )
       }
+    
+    const Content = () => {
+      return (
+        <>
+          <p>{parts[0].name}: {parts[0].exercises} exercises.</p>
+          <p>{parts[1].name}: {parts[1].exercises} exercises.</p>
+          <p>{parts[2].name}: {parts[2].exercises} exercises.</p>
+        </>
+      );
+    }
 
     return (
       <div>
         <p>{course}</p>
+        <Content />
         <Total total_exercises={total_exercises} />
       </div>
     )
