@@ -26,10 +26,12 @@ const App = () => {
             </>
         )
     }
+
     return (
       <div>
         <h1>{course.name}</h1>
         <Content part={course.parts} />
+
         <p>Total Parts: {course.parts.length}.</p> 
       </div>
     )
