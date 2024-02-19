@@ -1,9 +1,9 @@
-#root {
-    display: grid;
-    grid-template-columns: 100px 50px 100px;
-    grid-template-rows: 80px auto 80px;
-    column-gap: 10px;
-    row-gap: 15px;
-    height: 90vh;
-    margin: auto;
+
+td {
+  border: 1px solid black;
 }
+
+tr td:nth-child(2) {
+    text-align: right;
+}
+

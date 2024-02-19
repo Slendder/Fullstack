@@ -7,22 +7,21 @@ const Button = (props) => (
 const Buttons = ({ setGood, setNeutral, setBad }) => (
   <div className="Exercise_06">
     <h1>Give Feedback</h1>
-    <Button
-      handleClick={() => setGood((prev) => prev + 1)}
-      title="Good"
-    />
+    <Button handleClick={() => setGood((prev) => prev + 1)} title="Good" />
     <Button
       handleClick={() => setNeutral((prev) => prev + 1)}
       title="Neutral"
     />
-    <Button
-      handleClick={() => setBad((prev) => prev + 1)}
-      title="Bad"
-    />
+    <Button handleClick={() => setBad((prev) => prev + 1)} title="Bad" />
   </div>
 );
 
-const StatisticLine = (prop) => <h3>{`${prop.name}: ${prop.value}`}</h3>;
+const StatisticLine = (prop) => (
+  <tr>
+    <td>{prop.name}</td>
+    <td>{prop.value}</td>
+  </tr>
+);
 
 const Statistics = ({ good, neutral, bad }) => {
   const total = good + neutral + bad;
@@ -32,14 +31,14 @@ const Statistics = ({ good, neutral, bad }) => {
   if (total === 0) return <h2>No feedback given</h2>;
 
   return (
-    <div>
+    <table>
       <StatisticLine name="Good" value={good} />
       <StatisticLine name="Neutral" value={neutral} />
       <StatisticLine name="Bad" value={bad} />
       <StatisticLine name="Total" value={total} isLast />
-      <StatisticLine name="Positive percentage" value={`${positive}%`} isLast />
+      <StatisticLine name="Positive" value={`${positive}%`} isLast />
       <StatisticLine name="Average" value={average} isLast />
-    </div>
+    </table>
   );
 };
 
