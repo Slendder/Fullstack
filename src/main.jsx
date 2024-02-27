@@ -1,23 +1,23 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-import App from "./Part2/Exercise_01-05";
+import App from "./Part2/App";
 
 const notes = [
   {
     id: 1,
     content: "HTML is easy",
-    important: true,
+    important: Math.random() < 0.5,
   },
   {
     id: 2,
     content: "Browser can execute only JavaScript",
-    important: false,
+    important: Math.random() < 0.5,
   },
   {
     id: 3,
     content: "GET and POST are the most important methods of HTTP protocol",
-    important: true,
+    important: Math.random() < 0.5,
   },
 ];
 
