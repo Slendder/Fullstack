@@ -6,7 +6,7 @@ const App = () => {
 
   const addName = (event) => {
     event.preventDefault();
-    if (persons.includes({ name: newName })) {
+    if (persons.find((person) => person.name === newName)) {
       alert(`${newName} already exists!`);
     } else {
       const personObject = {
