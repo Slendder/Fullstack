@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-import App from "./Part2/Exercise_01-02";
+import App from "./Part2/Exercise_01-05";
 
 const notes = [
   {
