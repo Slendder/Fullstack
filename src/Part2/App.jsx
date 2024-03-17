@@ -3,7 +3,11 @@ import axios from "axios";
 import Note from "./components/Note";
 
 const App = () => {
-  const [notes, setNotes] = useState([]);
+  const [notes, setNotes] = useState( axios
+      .get("http://localhost:3001/notes")
+      .then(response => response.data)
+  );
+
   const [newNote, setNewNote] = useState("");
   const [showAll, setShowAll] = useState(true);
 
@@ -19,20 +23,21 @@ const App = () => {
   //   promise.then(handleEvent);
   // }, []);
 
-  const addNote = (event) => {
-    event.preventDefault();
-    const noteObject = {
-      content: newNote,
-      important: Math.random() < 0.5,
-      id: notes.length + 1,
-    };
+  const addNote = event => {
+      event.preventDefault()
+      const noteObject = {
+          content: newNote,
+          important: Math.random() > 0.5,
+      }
 
-    axios.post("http://localhost:3001/notes", noteObject).then((response) => {
-      console.log(response);
-      setNotes(notes.concat(response.data));
-      setNewNote("");
-    });
-  };
+      axios
+          .post('http://localhost:3001/notes', noteObject)
+          .then(response => {
+
+              setNotes(notes.concat(response.data))
+              setNewNote('')
+          })
+  }
 
   console.log("render", notes.length, "notes");
 
@@ -40,7 +45,8 @@ const App = () => {
     console.log(event.target.value);
     setNewNote(event.target.value);
   };
-  const notesToShow = showAll
+  
+    const notesToShow = showAll
     ? notes
     : notes.filter((note) => note.important === true);
   return (

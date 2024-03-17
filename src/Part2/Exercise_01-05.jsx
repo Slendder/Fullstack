@@ -12,7 +12,7 @@ const Course = ({ courses }) => {
               </li>
             ))}
           </ul>
-          <p>
+          <p> 
             Total of exercises:{" "}
             <strong>
               {course.parts.reduce((total, part) => total + part.exercises, 0)}
