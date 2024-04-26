@@ -1,29 +1,36 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Note from "./components/Note";
+import noteService from './services/notes.js';
 
 const App = () => {
-  const [notes, setNotes] = useState( axios
-      .get("http://localhost:3001/notes")
-      .then(response => response.data)
-  );
-
+  const [notes, setNotes] = useState(Note.getAll());
   const [newNote, setNewNote] = useState("");
+  console.log("as")
+  console.log(notes)
   const [showAll, setShowAll] = useState(true);
 
-  // useEffect(() => {
-  //   console.log("effect");
+    useEffect(() => {
+        noteService
+            .getAll()
+            .then(response => {setNotes(response.data)})  }, [])
 
-  //   const handleEvent = (response) => {
-  //     console.log("promise fulfilled");
-  //     setNotes(response.data);
-  //   };
+    const toggleImportanceOf = id => {
+        const note = notes.find(n => n.id === id)
+        const changedNote = { ...note, important: !note.important }
 
-  //   const promise = axios.get("http://localhost:3001/notes");
-  //   promise.then(handleEvent);
-  // }, []);
+        noteService      .update(id, changedNote)      .then(response => {        setNotes(notes.map(note => note.id !== id ? note : response.data))      })  }
 
-  const addNote = event => {
+    const addNote = (event) => {
+        event.preventDefault()
+        const noteObject = {
+            content: newNote,
+            important: Math.random() > 0.5
+        }
+
+        noteService      .create(noteObject)      .then(response => {        setNotes(notes.concat(response.data))        setNewNote('')      })  }
+
+    const addNote = event => {
       event.preventDefault()
       const noteObject = {
           content: newNote,
@@ -38,6 +45,7 @@ const App = () => {
               setNewNote('')
           })
   }
+
 
   console.log("render", notes.length, "notes");
 
